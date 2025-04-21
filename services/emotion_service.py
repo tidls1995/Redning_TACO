@@ -4,8 +4,10 @@ import ollama
 from pprint import pprint
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-
-nltk.download('punkt')
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
 
 EMOTION_MODEL_NAME = "searle-j/kote_for_easygoing_people"
